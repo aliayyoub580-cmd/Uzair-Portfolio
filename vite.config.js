@@ -16,11 +16,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          supabase: ['@supabase/supabase-js'],
-          query: ['@tanstack/react-query'],
-          ui: ['framer-motion', 'lucide-react'],
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+
+          if (id.includes('@supabase')) return 'supabase';
+          if (id.includes('@tanstack/react-query')) return 'query';
+          if (id.includes('framer-motion') || id.includes('lucide-react')) return 'ui';
+          if (
+            id.includes('/react/') ||
+            id.includes('/react-dom/') ||
+            id.includes('/react-router-dom/')
+          ) {
+            return 'vendor';
+          }
         },
       },
     },
