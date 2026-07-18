@@ -4,13 +4,13 @@ import { CalendarDays, GraduationCap, BriefcaseBusiness, MapPin, Mail, Phone, Lo
 import { getAboutContent, getExperience, getEducation } from '../services/publicApi';
 
 const STATIC_TIMELINE = [
-  { id:'e1', position:'Senior E-commerce Specialist', company:'Premium Retail Brand', start_date:'2022-01-01', is_current:true,  description:'Leading marketplace growth, SEO enhancements, and store performance for premium retail brands.' },
-  { id:'e2', position:'E-commerce Operations Lead',   company:'Digital Commerce Co',  start_date:'2020-01-01', end_date:'2021-12-31', description:'Scaled inventory workflows and optimized daily operations across multi-channel product catalogs.' },
-  { id:'e3', position:'Digital Commerce Analyst',     company:'Marketplace Agency',   start_date:'2018-01-01', end_date:'2019-12-31', description:'Focused on marketplace strategy, listing quality, and data-backed buybox growth.' },
+  { id:'e1', position:'Senior E-commerce Specialist', company:'Premium Retail Brand', start_date:'2026-12-01', is_current:true,  description:'Leading marketplace growth, SEO enhancements, and store performance for premium retail brands.' },
+  { id:'e2', position:'E-commerce Operations Lead',   company:'Digital Commerce Co',  start_date:'2024-12-01', end_date:'2025-12-01', description:'Scaled inventory workflows and optimized daily operations across multi-channel product catalogs.' },
+  { id:'e3', position:'Digital Commerce Analyst',     company:'Marketplace Agency',   start_date:'2022-12-01', end_date:'2023-12-01', description:'Focused on marketplace strategy, listing quality, and data-backed buybox growth.' },
 ];
 
 function fmtDateRange(start, end, isCurrent) {
-  const fmt = (d) => d ? new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : '';
+  const fmt = (d) => d ? new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' }) : '';
   return `${fmt(start)} – ${isCurrent ? 'Present' : fmt(end)}`;
 }
 
